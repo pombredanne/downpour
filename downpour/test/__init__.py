@@ -99,7 +99,9 @@ class ExamineRequest(UnittestRequest):
         # If it was just a filename, go ahead and append it to
         # the EchoServer's host. Otherwise, use the url
         UnittestRequest.__init__(self, name, request.url, request.data,
-                request.proxy)
+                request.proxy, headers=request.headers, time=request.time,
+            timeout=request.timeout, redirectLimit=request.redirectLimit,
+            followRedirect=request.followRedirect)
     
     def onHeaders(self, *args, **kwargs):
         self.request.onHeaders(*args, **kwargs)

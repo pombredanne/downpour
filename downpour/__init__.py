@@ -289,7 +289,13 @@ class BaseRequest(object):
     redirectLimit  = 10
     followRedirect = 1
     
-    def __init__(self, url, data=None, proxy=None, headers=None):
+    def __init__(self, url, data=None, proxy=None, headers=None, time=0,
+            timeout=45, redirectLimit=10, followRedirect=1):
+        self.time = time
+        self.timeout = timeout
+        self.headers = headers
+        self.redirectLimit = redirectLimit
+        self.followRedirect = followRedirect
         self.url, fragment = urlparse.urldefrag(url)
         self.data = data
         if proxy:
